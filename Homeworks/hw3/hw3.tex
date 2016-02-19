@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage{times, amsfonts}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{parskip} % so I don't have to use \noindent everywhere
+\usepackage{mathtools}
+\usepackage[none]{hyphenat} % don't split up words that flow onto next line
+
+\title{Abstract Algebra Homework 3}
+\author{\textit{Joe Loser}}
+\date{February 7, 2016}
+
+\begin{document}
+\maketitle
+
+This problem set includes problems from sections 3.4: namely, problems $32, 33, 45, 46$ and $48$.\\
+
+32) Show that if $G$ is a finite group of even order, then there is an $a \in G$ such that $a$ is not the identity and $a^{2} = e$.
+
+\underline{Proof}: Define $S \subseteq G$ by 
+	$$ S := \{a \in G : a \neq a^{-1}\,\}. $$
+Notice that $S$ is a \textit{proper} subset of $G$ since $e \notin S.$ Since $(a^{-1})^{-1} = a$ for all $a \in G$, we see that $a \in S$ if and only if $a^{-1} \in S$. This is valid since a group is closed under inverses. So, we can pair up the elements of $S$ each with their respective inverses:
+\begin{equation}
+	S = \{a_1, a_1^{-1}, a_2, a_2^{-1}, ..., a_n, a_n^{-1}\} \tag{*}. 
+\end{equation}
+
+Thus, we see that $S$ has an even number of elements: $\lvert S \rvert = 2n$. Suppose $\lvert G \rvert = 2m$ by hypothesis. Then, $n < m$ and the number of elements $a \in G$ satisfying the condition that $a = a^{-1}$ is
+	$$2m - 2n = 2(m - n) .$$
+In particular, notice that an even number of elements in $G$ are equal to their own inverses and are paired together in the ordering of $(*)$. Hence, since $e = e^{-1}$, there must be at least one other element $a \in G$ such that $a = a^{-1}$.	 \qed \\
+
+33) Let $G$ be a group and suppose that $(ab)^{2} = a^{2}b^{2}$ for all $a, b \in G$. Prove that $G$ is an abelian group. 
+
+\underline{Proof}: We know that a group $G$ is abelian if  $\forall a, b \in G \ a * b = b * a. $ Let $a, b \in G$. Then we have that $(ab)^2 = (ab)(ab) = a^{2}b^{2}.$ Since $G$ is a group, both $a$ and $b$ have inverses which we denote $a^{-1}$ and $b^{-1}$. Clearly multiplication in $G$ is well-defined and it also contains inverses by definition of a group. So we can safely multiply both sides of the equation by $a^{-1}$. So we have that
+
+\begin{align*}
+	a^{-1} \big((ab)(ab)\big) &= a^{-1}(a^{2}b^{2}) \\
+	\big( a^{-1} (ab) \big) (ab) &= (a^{-1}a^{2})b^2 \\
+	\big( (a^{-1}a) b \big) (ab) &= \big( (a^{-1} a) a \big) b^2 \\
+	(eb) (ab) &= (ea) b^2 \\
+	b(ab) &= ab^2  \tag{1}
+\end{align*}
+
+Now, multiply $(1)$ by $b^{-1}$. This yields
+\begin{align*}
+	b(ab) b^{-1} &= (ab^{2})b^{-1} \\
+	(ba)(bb^{-1}) &= (ab) (bb^{-1}) \\
+	(ba) e &= (ab) e \\
+	ba &= ab
+\end{align*}
+
+Thus, we have shown that $G$ is an abelian group. \qed \\
+
+45) Prove that the intersection of two subgroups of a group $G$ is also a subgroup of $G.$
+
+\underline{Proof}: Let $G$ be a group and let $H_1 < G$ and $H_2 < G$ be subgroups of $G$. We want to show $H_1 \cap H_2 < G. $ To show this, we want to satisfy the three conditions of the Subgroup Test (Proposition G4 in class). 
+
+We know that $e \in H_1$ and $e \in H_2$ since $H_1$ and $H_2$ are subgroups. So, $e \in H_1 \cap H_2. $ In turn, this also shows that $H_1 \cap H_2$ is not empty.
+
+Next, let $h \in H_1 \cap H_2$. Clearly $h \in H_1$ then. Since $H_1$ is a subgroup, then $h^{-1} \in H_1$. Similarly, $h \in H_2$ and since $H_2$ is a subgroup, $h^{-1} \in H_2.$ Thus, $h^{-1} \in H_1 \cap H_2. $
+
+Lastly, by definition, $H_1$ and $H_2$ are closed under the binary operation of $G$. Let $k, k' \in H_1 \cap H_2.$ Then $k \in H_1$ and $k' \in H_1$. Since $H_1$ is a subgroup, $kk' \in H_1$. Similarly, $k \in H_2$ and $k' \in H_2.$ Since $H_2$ is also a subgroup, $kk' \in H_2$. Hence, $kk' \in H_1 \cap H_2.$
+
+We have shown that $H_1 \cap H_2$ contains the identity, inverses, and is closed under multiplication. Hence, it is a subgroup. \qed \\
+
+46) Prove or disprove: If $H$ and $K$ are subgroups of a group $G$, then $H \cup K$ is a subgroup of $G.$
+
+\underline{Proof}: Let $H < G$ and $K < G$ be subgroups of a group $G.$ The union $H \cup K$ need not be a subgroup of $G$. We will prove this by giving a simple counterexample. 
+
+Consider $\mathbb{Z}_6$, the cyclic  group of order $6$. We will look at two of its subgroups: namely those generated from $2$ and $3$ and show that the union of these two subgroups is not a subgroup. These two subgroups are $\{[0], [2], [4]\}$ and $\{[0], [3]\}$, i.e. $\mathbb{Z}_2$ and $\mathbb{Z}_3$.  Then, $H \cup K = \{[0], [2], [3], [4]\}$ which is not a subgroup since it is not closed under addition. In particular, notice that $2 \in \mathbb{Z}_2$ and $3 \in \mathbb{Z}_3$ and hence are both in the union. However, their sum $5 = 2 + 3$ is not an element of $H \cup K$ because $5$ is neither a multiple of $2$ or $3$.
+
+Since we have shown a counterexample that the union of two subgroups of a group $G$ need not yield a subgroup, we are done. \qed \\
+
+%\underline{Remark}: $H \cup K$ is a subgroup if and only if $H < K$ or $K < H$. \\
+
+48) Let $G$ be a group and $g \in G.$ Show that 
+	$$ Z(G) = \{x \in G : gx = xg \ \forall g \in G\}. $$
+is a subgroup of $G$. This subgroup is called the \textbf{center} of $G$.
+
+\underline{Proof}: For all $g \in G$ we have that $eg = ge = e.$ Thus $e \in Z(G)$ which means $Z(G)$ is non-empty.
+
+Let $a, b \in Z(G).$ Then for all $g \in G$ we have $ag = ga$ and $bg = gb$ so that
+\begin{align*}
+	(ab)g &= a(bg) \\
+	&= a(gb) \\
+	&= (ag)b \\
+	&= (ga)b \\
+	&= g(ab)
+\end{align*}
+Therefore, $ab \in Z(G).$ 
+
+Lastly, let $c\in Z(G)$ and since $g \in G$, then $cg = gc.$ We want to show that $Z(G)$ contains inverses. So, multiply both sides by $c^{-1}$ twice. This is allowed since $Z(G)$ is a subgroup and hence contains inverses. 
+\begin{align*}
+	c^{-1} (cg) c^{-1} &= c^{-1} (gc) c^{-1} \\
+	(c^{-1} c) gc^{-1} &= c^{-1}g(cc^{-1}) \\
+	egc^{-1} &= c^{-1}ge \\
+	gc^{-1} &= c^{-1}g
+\end{align*}
+Therefore, $c^{-1} \in Z(G)$ since we took $c$ to be an arbitrary element of $Z(G).$ 
+
+Thus, $Z(G)$ is a subgroup. \qed \\
+
+\end{document}
