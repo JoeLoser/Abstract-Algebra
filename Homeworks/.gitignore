@@ -1,0 +1,5 @@
+# Core LaTeX/PDFLatex auxillary files
+*.aux
+*.log
+*.out
+*.synctex.gz
