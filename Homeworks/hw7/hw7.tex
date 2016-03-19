@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{parskip} % so I don't have to use \noindent everywhere
+\usepackage{mathtools}
+\usepackage[none]{hyphenat} % don't split up words that flow onto next line
+\usepackage{microtype,todonotes}
+\usepackage[a4paper,text={16.5cm,25.2cm},centering]{geometry}
+\usepackage[compact,small]{titlesec}
+\setlength{\parskip}{1.2ex}
+\setlength{\parindent}{0em}
+
+% To prevent orphans and widows (https://en.wikipedia.org/wiki/Widows_and_orphans)
+\clubpenalty = 10000
+\widowpenalty = 10000
+\usepackage{kpfonts}
+\usepackage[T1]{fontenc}
+
+\title{Abstract Algebra Homework 7}
+\author{\textit{Joe Loser}}
+\date{March 18, 2016}
+\begin{document}
+\maketitle
+
+This problem set includes problems $10.3$ numbers $4d), 11.3$ numbers $7, 16,17$ and $11.4$ number 5.
+
+4) Let $T$ be the group of nonsingular upper triangular $2 \times 2$ matrices with entries in $\mathbb{R}$. Let $U$ consist of matrices of the form 
+$$\begin{pmatrix}
+1 & x \\
+0 & 1
+\end{pmatrix}$$
+where $x \in \mathbb{R}$. \\
+
+4d) Show that $T/U$ is abelian. \\
+
+\underline{Proof}: Note that we have already showed that $U$ is normal in $T$ in part 4c). To show that $T/U$ is abelian, we need to show that $(AU)(BU) = (BU)(AU)$ for all $A, B \in T$.
+
+Let $A =
+\begin{pmatrix}
+	a & b \\ 
+	0 & c
+\end{pmatrix}$ and let $B =
+\begin{pmatrix}
+	a' & b' \\
+	0 & c'
+\end{pmatrix}$. Then we have that $$AB = 
+\begin{pmatrix}
+	aa' & ab' + bc' \\
+	0 & cc'
+\end{pmatrix}$$ and $$BA = 
+\begin{pmatrix}
+	a'a & a'b + b'c \\
+	0 & c'c
+\end{pmatrix}.$$ 
+
+This shows that $AB \neq BA$ in general. However, we want to show that $(AU)(BU) = (BU)(AU)$. Note that $(AU)(BU) = ABU$ and $(BU)(AU) = BAU$ since $U$ is normal. Let $C =
+\begin{pmatrix}
+	1 & z \\
+	0 & 1
+\end{pmatrix} \in U$ where $z \in \mathbb{R}$. Then we have that
+$$ABU =
+\begin{pmatrix}
+	aa' & z(ab' + bc') \\
+	0 & cc'
+\end{pmatrix}$$ and 
+$$BAU = 
+\begin{pmatrix}
+a'a & z(a'b + b'c) \\
+0 & c'c
+\end{pmatrix}.$$ 
+
+Notice that $aa' = a'a$ and $cc' = c'c$ since $a, a', c, c' \in \mathbb{R}$. So we see that $ABU$ and $BAU$ only differ in the upper right entry. This does not matter though since $U$ is matrices of the form 
+$$\begin{pmatrix}
+1 & x \\
+0 & 1
+\end{pmatrix}$$ where $x \in \mathbb{R}$. Notice that both $z(ab' + bc')$ and $z(a'b + b'c) \in \mathbb{R}$. Thus, $AB$ and $BA$ define the same coset in $U$, meaning that $ABU = BAU$. Thus $T/U$ is abelian. \qed \\
+
+7) In the group $\mathbb{Z}_{24}$, let $H = \langle 4 \rangle$ and $N = \langle 6 \rangle.$\\
+
+a) List the elements in $H + N$ and $H \cap N$.\\
+
+b) List the cosets in $HN/N$, showing the elements in each coset.\\
+
+c) List the costs in $H/(H \cap N)$, showing the elements in each coset.\\
+
+d) Give the correspondence between $HN/N$ and $H/(H \cap N)$ described in the proof of the Second Isomorphism Theorem. \\
+
+16) If $H$ and $K$ are normal subgroups of $G$ and $H \cap K = \{ {e} \}$, prove that $G$ is isomorphic to a subgroup of $G/H \times G/K$. \\
+
+17) Let $\phi : G_1 \mapsto G_2$ be a surjective group homomorphism. Let $H_1$ be a normal subgroup of $G_1$ and suppose that $\phi(H_1) = H_2$. Prove or disprove that $G_1/H_1 \cong G_2/H_2$. \\
+
+\underline{Proof}: We will disprove that $G_1/H_1 \cong G_2/H_2$ by giving a counterexample. \todo{Give counter example.} \qed \\
+
+5) Let $G$ be a group and let $i_g$ be an inner automorphism of $G$ and define a map $G \mapsto Aut(G)$ by $g \mapsto i_g$. Prove that this map is a homomorphism with image $Inn(G)$ and kernel $Z(G)$. Use this result to conclude that 
+$$G/Z(G) \cong Inn(G)$$
+
+
+
+
+\end{document}
