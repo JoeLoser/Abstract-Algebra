@@ -1,9 +1,20 @@
 \documentclass{article}
-\usepackage{times, amsfonts}
 \usepackage{amsmath, amsthm, amssymb}
 \usepackage{parskip} % so I don't have to use \noindent everywhere
 \usepackage{mathtools}
 \usepackage[none]{hyphenat} % don't split up words that flow onto next line
+\usepackage{microtype,todonotes}
+\usepackage[a4paper,text={16.5cm,25.2cm},centering]{geometry}
+\usepackage[compact,small]{titlesec}
+\setlength{\parskip}{1.2ex}
+\setlength{\parindent}{0em}
+\DeclareMathOperator{\lcm}{lcm}
+
+% To prevent orphans and widows (https://en.wikipedia.org/wiki/Widows_and_orphans)
+\clubpenalty = 10000
+\widowpenalty = 10000
+\usepackage{kpfonts}
+\usepackage[T1]{fontenc}
 
 \title{Abstract Algebra Homework 6}
 \author{\textit{Joe Loser}}
@@ -15,12 +26,13 @@ This problem set includes problems from sections $11.3$, $9.3$, and $10.3$.
 
 8) If $G$ is an abelian group and $n \in \mathbb{N}$, show that $\phi : G \to G$ defined by $g \mapsto g^{n}$ is a group homomorphism. 
 
-\underline{Proof}: Let $a, b \in G$. It is easy to see that $\phi : G \to G$ is well-defined for all $g \in G$. Then we have that $\phi(a) = a^n$ and $\phi(b) = b^n$. Also we have that $\phi(ab) = (ab)^{n} = a^{n}b^{n}$. Similarly, $\phi(ba) = (ba)^{n} = b^{n}a^{n}$. Thus $\phi(ab) = \phi(ba)$ since $G$ is an abelian group. 
-
-To show that $\phi : G \mapsto G$ is a group homomorphism, it must satisfy
-$$\phi(ab) = \phi(a)\phi(b)$$
-As we have calculated, we have shown that this holds as
-$$\phi(ab) = \phi(ba) = a^{n}b^{n} = \phi(a)\phi(b) $$
+\underline{Proof}: Let $a, b \in G$. It is easy to see that $\phi : G \to G$ is well-defined for all $g \in G$. To show $\phi$ is a group homomorphism we need to show that $\phi(ab) = \phi(a)\phi(b)$ for all $a, b \in G$. We have that
+\begin{align*}
+	\phi(ab) &= (ab)^{n} \\
+	&= b^{n}a^{n} \\
+	&= a^{n}b^n \because{\text{G is abelian}} \\
+	&= \phi(a)\phi(b)
+\end{align*}
 
 Hence, $\phi : G \mapsto G$ is indeed a group homomorphism. \qed \\
 
@@ -31,7 +43,7 @@ $$\phi(g^n) = \phi\underbrace{(g \cdot g \cdot g \cdots g)}_{\text{n times}} = \
 
 Since every element of $G$ is of the form $g^{n}$, then this shows that every element $\phi(G)$ is of the form $\big(\phi(g)\big)^n$. Thus $\phi(G)$ is also cyclic and $\phi(G) = \langle \phi(g) \rangle$. \qed \\
 
-\pagebreak 8) Prove that $\mathbb{Z}$ is not isomorphic to $\mathbb{Z}$. 
+\pagebreak 8) Prove that $\mathbb{Q}$ is not isomorphic to $\mathbb{Z}$. 
 
 \underline{Proof}: Without loss of generality, assume the group binary operation is $+$ for both groups. We claim that $\mathbb{Q} \not \cong \mathbb{Z}$  since $\mathbb{Z}$ is cyclic ($\mathbb{Z} = \langle 1 \rangle$) while $\mathbb{Q}$ is not. If $\mathbb{Q}$ were isomorphic to $\mathbb{Z}$ then $\mathbb{Q}$ must be cyclic. We will show that $\mathbb{Q}$ is not cyclic. 
 
@@ -55,9 +67,14 @@ ii) We now show $\phi \times \psi$ is one-to-one. Let $(g_1, h_1), (g_2, h_2) \i
 $$(\phi \times \psi)(g_1, h_1) = (\phi \times \psi)(g_2, h_2).$$
 Then we have that $(\phi(g_1), \psi(h_1)) = (\phi(g_2), \psi(h_2))$ which is true if and only if $\phi(g_1) = \phi(g_2)$ and $\psi(h_1) = \psi(h_2)$. Since both $\phi$ and $\psi$ are bijective, we have that $g_1 = g_2$ and $h_1 = h_2$ respectively. Thus $(g_1, h_1) = (g_2, h_2)$ and $\phi \times \psi$ is one-to-one.
 
-iii) We now show that $\phi \times \psi$ is onto and thus we will have shown it is bijective. Let $\big(\phi(g), \psi(h)\big) \in \overline{G} \times \overline{H}$. We want to show there exist $(g, h)$ such that
-$$(\phi \times \psi)(g, h) = \big(\phi(g), \psi(h)\big).$$
-By definition of $\phi \times \psi$, we have that this is immediately true. So $\phi \times \psi$ is onto and we then have that it is bijective.
+iii) We now show that $\phi \times \psi$ is onto and thus we will have shown it is bijective. Let $(\overline{g}, \overline{h}) \in \overline{G} \times \overline{H}$. We want to show there exist $(g, h)$ such that
+$$(\phi \times \psi)(g, h) = (\overline{g}, \overline{h}).$$
+We have that
+\begin{align*}
+	(\phi \times \psi)(g, h) &= \big(\phi(g), \psi(h) \big) \\
+	&= (\overline{g}, \overline{h}).
+\end{align*}
+So $\phi \times \psi$ is onto and we then have that it is bijective.
 
 iv) Lastly we need to show $\phi \times \psi$ is a homomorphism. Let $(g_1, h_1), (g_2, h_2) \in G \times H$. We want to show
 \begin{equation}
@@ -67,7 +84,7 @@ By definition, we have that $(g_1h_1)(g_2h_2) = (g_1g_2, h_1h_2)$. Working with 
 \begin{align*}
 	(\phi \times \psi)\big((g_1, h_1)(g_2, h_2)\big) &= (\phi \times \psi)(g_1g_2, h_1h_2) \\
 	&= \big(\phi(g_1g_2), \psi(h_1h_2)\big) \\
-	&= \big(\phi(g_1)\phi(g_2), \psi(h_1)\psi(h_2)\big) \because \phi, \psi \ bijective
+	&= \big(\phi(g_1)\phi(g_2), \psi(h_1)\psi(h_2)\big) \because \phi, \psi \, \text{homomorphisms}
 \end{align*}
 
 Working with the right hand side of equation (1), we also see that
@@ -76,9 +93,7 @@ Working with the right hand side of equation (1), we also see that
 	&= \big(\phi(g_1)\phi(g_2), \psi(h_1)\psi(h_2)\big)
 \end{align*}
 
-Thus, $\phi \times \psi$ is indeed a group homomorphism as it respects the group structure.
-
-Since the function $\phi \times \psi$ is bijective and a group homomorphism, we have that \linebreak $G \times H \cong \overline{G} \times \overline{H}$. \qed \\
+Thus, $\phi \times \psi$ is indeed a group homomorphism. Since the function $\phi \times \psi$ is bijective and a group homomorphism, we have that $$G \times H \cong \overline{G} \times \overline{H}.$$ \qed \\
 
 4) Let $T$ be the group of nonsingular upper triangular $2 \times 2$ matrices with entries in $\mathbb{R}$. Let $U$ consist of matrices of the form 
 $$\begin{pmatrix}
