@@ -8,6 +8,7 @@
 \usepackage[compact,small]{titlesec}
 \setlength{\parskip}{1.2ex}
 \setlength{\parindent}{0em}
+\DeclareMathOperator{\lcm}{lcm}
 
 % To prevent orphans and widows (https://en.wikipedia.org/wiki/Widows_and_orphans)
 \clubpenalty = 10000
@@ -72,19 +73,72 @@ Notice that $aa' = a'a$ and $cc' = c'c$ since $a, a', c, c' \in \mathbb{R}$. So 
 $$\begin{pmatrix}
 1 & x \\
 0 & 1
-\end{pmatrix}$$ where $x \in \mathbb{R}$. Notice that both $z(ab' + bc')$ and $z(a'b + b'c) \in \mathbb{R}$. Thus, $AB$ and $BA$ define the same coset in $U$, meaning that $ABU = BAU$. Thus $T/U$ is abelian. \qed \\
+\end{pmatrix}$$ where $x \in \mathbb{R}$. Notice that both $z(ab' + bc')$ and $z(a'b + b'c) \in \mathbb{R}$. Thus, $AB$ and $BA$ define the same coset in $U$, meaning that $ABU = BAU$. Thus $T/U$ is abelian. \qed \pagebreak
 
 7) In the group $\mathbb{Z}_{24}$, let $H = \langle 4 \rangle$ and $N = \langle 6 \rangle.$\\
 
 a) List the elements in $H + N$ and $H \cap N$.\\
 
+\underline{Solution}: We have that
+\begin{align*}
+	H+N &= \{ h + n \ \vert \ h \in H \text{and} \, n \in N\} \\
+	&= \{ h + n \ \vert \ h \in \langle 4 \rangle \, \text{and} \, n \in \langle 6 \rangle\} \\
+	&= \{ 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22 \} \\
+	&= \langle 2 \rangle
+\end{align*}
+
+We also see that $H \cap N = \{ 0, 12 \}.$
+
+Remarks: Note that $H + N = \big\langle \gcd(4,6) \big\rangle $ in $\mathbb{Z}_{24}$ and also that $H \cap N = \big\langle \lcm(4, 6) \big\rangle \mathbb{Z}$ in $\mathbb{Z}_{24}$. \qed \\
+
 b) List the cosets in $HN/N$, showing the elements in each coset.\\
+
+\underline{Solution}: We know that 
+$$ (H + N) / N := \{ g + n \, \vert \, g \in H + N\}. $$
+
+So we see that the cosets that partition $H+N$ are the following:
+\begin{align*}
+	0 + N &= \{ 0, 6, 12, 18\} \\
+	2 + N &= \{ 2, 8, 14, 20 \} \\
+	4 + N &= \{ 4, 10, 16, 22\}
+\end{align*}
 
 c) List the costs in $H/(H \cap N)$, showing the elements in each coset.\\
 
-d) Give the correspondence between $HN/N$ and $H/(H \cap N)$ described in the proof of the Second Isomorphism Theorem. \\
+\underline{Solution}: We know that
+$$ H / (H \cap N) := \{ aH \cap N \, \vert \, a \in H \}.$$
+
+So we see that the cosets that partition the group $H$ are the following:
+\begin{align*}
+	0 + H \cap N &= \{0, 12\} \\
+	4 + H \cap N &= \{4, 16\}  \\
+	8 + H \cap N &= \{8, 20\}
+\end{align*}
+
+d) Give the correspondence between $()H+N)/N$ and $H/(H \cap N)$ described in the proof of the Second Isomorphism Theorem. \\
+
+\underline{Solution}: Recall that all subgroups of an abelian group are normal. Since $\mathbb{Z}_{24}$ is an abelian group, we have that $H$ and $N$ are normal in $\mathbb{Z}_{24}$. So we can apply the Second Isomorphism Theorem which tells us
+$$H / (H \cap N) \cong (H+N) / N.$$ \qed \\
 
 16) If $H$ and $K$ are normal subgroups of $G$ and $H \cap K = \{ {e} \}$, prove that $G$ is isomorphic to a subgroup of $G/H \times G/K$. \\
+
+\underline{Proof}: To show that $G$ is isomorphic to a subgroup of $G/H \times G/K$, we need to define a function $\phi$ and show it is a group homomorphism. Then we will show that $\ker \phi = \{e\}$ and use the First Isomorphism Theorem.
+
+Let $\phi : G \mapsto G/H \times G/K$ be defined as $\phi(g) = (gH, gK)$. Clearly the function $\phi$ is well-defined. We now need to show this is indeed a group homomorphism. Let $a, b \in G$. Then
+\begin{align*}
+	\phi(ab) &= (abH, abK) \\
+	&= (aH, aK)(bH, bK) \\
+	&= \phi(a)\phi(b).
+\end{align*} So $\phi$ is a homomorphism. From the First Isomorphism Theorem, we know that 
+$$G / \ker \phi \cong \phi(G).$$
+
+Since $\phi(G)$ is a subgroup of $G/H \times G/K$ and we want to show $G \cong \phi(G)$, it suffices for us to show that $\ker \phi = \{ e \}$, i.e. $\ker \phi = H \cap K$. 
+
+Let $g \in \ker \phi$. Then $\phi(g) = (gH, gK) = (H, K)$. That is, $gH = H$ and $gK = K$. Thus $g \in H \cap K$ and we have that $\ker \phi \subset H \cap K$. Contrarily, if $g \in H \cap K$ then we clearly see that $\phi(g) = (gH, gK) = (H, K)$ so that $H \cap K \subset \ker \phi$. Thus $\ker \phi = H \cap K$.
+
+Since we have shown that $\ker \phi = H \cap K$, i.e. $\phi$ is one-to-one, we have proven that 
+$$G \cong \phi(G)$$
+which is a subgroup of $G/H \times G/K$. \qed \\
 
 17) Let $\phi : G_1 \mapsto G_2$ be a surjective group homomorphism. Let $H_1$ be a normal subgroup of $G_1$ and suppose that $\phi(H_1) = H_2$. Prove or disprove that $G_1/H_1 \cong G_2/H_2$. \\
 
