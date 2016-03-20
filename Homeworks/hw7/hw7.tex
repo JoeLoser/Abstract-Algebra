@@ -142,7 +142,26 @@ which is a subgroup of $G/H \times G/K$. \qed \\
 
 17) Let $\phi : G_1 \mapsto G_2$ be a surjective group homomorphism. Let $H_1$ be a normal subgroup of $G_1$ and suppose that $\phi(H_1) = H_2$. Prove or disprove that $G_1/H_1 \cong G_2/H_2$. \\
 
-\underline{Proof}: We will disprove that $G_1/H_1 \cong G_2/H_2$ by giving a counterexample. \todo{Give counter example.} \qed \\
+\underline{Proof}: We will disprove that $G_1/H_1 \cong G_2/H_2$ by giving a counterexample.
+
+Let $G_1 = \mathbb{Z}, G_2 = \mathbb{Z}, H_1 = 2\mathbb{Z}, H_2 = 3\mathbb{Z}$. Then we see that obviously $G_1 \cong G_2$ and $H_1 \cong \mathbb{Z} \cong H_2$. However, for the quotient groups, we have that 
+$$G_1 / H_1 = \mathbb{Z} / 2\mathbb{Z} \cong \mathbb{Z}_2$$
+and
+$$G_2 / H_2 = \mathbb{Z} / 3\mathbb{Z} \cong Z_3.$$
+
+So $G_1 / H_1 \not \cong G_2 / H_2$. We have not explicitly defined our surjective group homomorphism $\phi$ yet. 
+
+All possible homomorphisms from $\mathbb{Z} \mapsto \mathbb{Z}$ are determined by the image of the generator, i.e. $1$. So suppose then that $\phi(1) = n$ for $n \in \mathbb{Z}$. Then the homomorphism is
+\begin{align*}
+	\phi(k) &= \phi(k \cdot 1) \\
+	&= k \phi(1) \\
+	&= kn
+\end{align*}
+for all $k \in \mathbb{Z}$. Thus, \textit{all} of the possible homomorphisms from $\mathbb{Z} \mapsto \mathbb{Z}$ are of the form $\phi_n : \mathbb{Z} \mapsto \mathbb{Z}$ defined by $\phi_n(k) = kn$ for all $k, n \in \mathbb{Z}$. However, for the purposes of this problem, we are only interested in homomorphisms of $\mathbb{Z}$ onto $\mathbb{Z}$. Since $\mathbb{Z}$ only has two generators: $1$ and $-1$, we have that the two possible onto homomorphisms are
+$$\phi_1 : \mathbb{Z} \mapsto \mathbb{Z}; \phi_1(k) = k$$
+$$\phi_{-1} : \mathbb{Z} \mapsto \mathbb{Z}; \phi_{-1}(k) = -k.$$ 
+
+Since we have constructed a specific example showing that $G_1/H_1 \cong G_2/H_2$ does not always hold, we are done. \qed \\\
 
 5) Let $G$ be a group and let $i_g$ be an inner automorphism of $G$ and define a map $G \mapsto Aut(G)$ by $g \mapsto i_g$. Prove that this map is a homomorphism with image $Inn(G)$ and kernel $Z(G)$. Use this result to conclude that 
 $$G/Z(G) \cong Inn(G)$$
