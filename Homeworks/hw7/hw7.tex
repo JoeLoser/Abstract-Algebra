@@ -166,7 +166,26 @@ Since we have constructed a specific example showing that $G_1/H_1 \cong G_2/H_2
 5) Let $G$ be a group and let $i_g$ be an inner automorphism of $G$ and define a map $G \mapsto Aut(G)$ by $g \mapsto i_g$. Prove that this map is a homomorphism with image $Inn(G)$ and kernel $Z(G)$. Use this result to conclude that 
 $$G/Z(G) \cong Inn(G)$$
 
+\underline{Proof}: Recall that $i_g(x) := gxg^{-1}$. We first show that the map is a homomorphism. Let $a, b \in G$. Then
+\begin{align*}
+	i_{ab}(x) &= (ab)x(ab)^{-1} \\
+	&= abxb^{-1}a^{-1} \\
+	&= a(bxb^{-1})a^{-1} \\
+	&= i_a(i_b(x)) \\
+	&= (i_ai_b)(x)
+\end{align*}
+Since $i_{ab} = i_ai_b$ our map is a homomorphism.
 
+By definition, we know that $Inn(G)$ is the set of inner automorphisms:
+$$Inn(G) := \{ i_g \, \vert \, g \in G \}.$$
+So clearly the image for our homomorphism is $Inn(G)$ by definition. Next, we show that the kernel of this homomorphism is $Z(G)$, the center of $G$.
+\begin{align*}
+	\{ a \in G \, \vert \, i_a(x) = x \quad \forall x \in G \} &= \{  a \in G \, \vert \, axa^{-1} = x \quad \forall x \in G \} \\
+	&=  \{  a \in G \, \vert \, ax = xa \quad \forall x \in G \} \\
+	&= Z(G)
+\end{align*}
 
+By the First Isomorphism Theorem, we conclude that
+$$G/Z(G) \cong Inn(G).$$ \qed \\
 
 \end{document}
