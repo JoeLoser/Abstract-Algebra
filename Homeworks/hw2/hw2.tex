@@ -35,7 +35,7 @@ Thus, we see that $a^{2}$ is even.  Using the given fact that $2$ is prime, $a$ 
 \end{align*}
 
 \noindent
-But now we have shown that $b^{2}$ is even which implies that $b$ is even since $2$ is a prime. However, this contradicts how we constructed such an $a$ and $b$. By contradiction, no such integers $p$ and $q$ can exist that satisfy the condition $p^{2} = 2q^{2}$. \qed \\ \\ \\
+But now we have shown that $b^{2}$ is even which implies that $b$ is even since $2$ is a prime. However, this contradicts how we constructed such an $a$ and $b$. By contradiction, no such integers $p$ and $q$ can exist that satisfy the condition $p^{2} = 2q^{2}$. It is well know that $\sqrt{2} \not \in \mathbb{Q}$. \qed \\ \\ \\
 
 \noindent 1b) Find all $x \in \mathbb{Z}$ such that $5x + 1 \equiv 13\ (\bmod\ 23) $. \\
 
@@ -60,6 +60,7 @@ To show that the set $S$ is a group with a binary operation $*$, it needs to sat
   \item $S$ is closed under $*$.
   \item There exists an element $e \in S$ such that for any element $a \in S, e * a = a * e = a$ (identity property)
   \item For each element $a \in S$, there exists an inverse element in $S$ which we denote $a^{-1}$ such that $a * a^{-1} = a^{-1} * a = e$ (inverse property)
+  \item * is a binary operator
 \end{enumerate}
 
 \noindent
@@ -74,9 +75,12 @@ We show each of these conditions in order now.
 		&= a + (b + c + bc) + a(b + c + bc) \\		
 		&= a * (b * c)
 	\end{align*}
+	
 	\item We need to show that $S$ is closed under $*$, i.e. we need to make sure $a * b$ never equals $-1$.  Note that if $a * b = a + b + ab = -1$, then $a + b + ab + 1 = 0$.  This is equivalent to $(b + 1) + a(1 + b) = 0$ by factoring out an $a$ where we can. This is the same as $(b+1)(a+1) = 0$. Now, note that $a$ and $b$ cannot be $-1$ because the set $S = \mathbb{R} \setminus \{-1\}$ and $a$ and $b$ $\in S$. Since $a$ and $b$ are not $-1$, neither is $a + b + ab$. Therefore, $S$ is closed under the binary operation $*$.
-	\item We need to show that $S$ has an identity element. Notice that $a * 0 = a + 0 + 0 = a$, so $S$ does indeed have an identity element and it is $0$.
-	\item Lastly, we need to show that every $a \in S$ has an inverse element. Choose any $a \in S$. We want to find an inverse for $a$, so we want to find a $b \neq -1$ such that $a * b = 0$.  	
+	
+	\item We need to show that $S$ has an identity element. Notice that $a * 0 = a + 0 + 0 = a$, so $S$ does indeed have an identity element and it is $0$. One can also see that $a * 0 = 0 * a$ since $S$ is abelian.
+	
+	\item We need to show that every $a \in S$ has an inverse element. Choose any $a \in S$. We want to find an inverse for $a$, so we want to find a $b \neq -1$ such that $a * b = 0$. One can also see this is equal to $b * a$ since $S$ is abelian.
 	\begin{center}
 		$ a * b = 0$ \\
 		$ ab + a + b = 0$ \\
@@ -84,13 +88,14 @@ We show each of these conditions in order now.
 		$ b = -\dfrac{a}{a+1} $
 	\end{center}	
 \noindent
-So, let $b = \frac{-a}{1+a}$. Now note that $b$ cannot be $-1$, otherwise we would have that $-1 = \frac{-a}{1+a} \implies a = 1 + a$ which is not possible. As a result, $b \in S$. Then, 
+So, let $b = \frac{-a}{1+a}$. Now note that $b$ cannot be $-1$, otherwise we would have that $-1 = \frac{-a}{1+a} \implies a = 1 + a$ which is not possible. As a result, $b \in S$ and $a \neq -1$. Then, 
 	\begin{align*}
 		a * b &= a + \dfrac{-a}{1+a} + a\dfrac{-a}{1+a} \\
 		&= \dfrac{a(1+a)}{1+a} + \dfrac{-a}{1+a} + \dfrac{-a^{2}}{1+a} \\
 		&= 0
 	\end{align*}
 which is the identity.
+\item Lastly, to show $*$ is a binary operation, if $a, b \neq -1$, we need to show $a * b \neq -1$. The only way $a * b = -1$ is if either $a$ or $b$ is $-1$. Thus $a * b \neq -1$ for all $a, b \in S$ and we have that $*$ is a binary operation.
 \end{enumerate}
 
 \noindent
