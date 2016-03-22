@@ -115,7 +115,7 @@ So we see that the cosets that partition the group $H$ are the following:
 	8 + H \cap N &= \{8, 20\}
 \end{align*}
 
-d) Give the correspondence between $()H+N)/N$ and $H/(H \cap N)$ described in the proof of the Second Isomorphism Theorem. \\
+d) Give the correspondence between $(H+N)/N$ and $H/(H \cap N)$ described in the proof of the Second Isomorphism Theorem. \\
 
 \underline{Solution}: Recall that all subgroups of an abelian group are normal. Since $\mathbb{Z}_{24}$ is an abelian group, we have that $H$ and $N$ are normal in $\mathbb{Z}_{24}$. So we can apply the Second Isomorphism Theorem which tells us
 $$H / (H \cap N) \cong (H+N) / N.$$ \qed \\
@@ -144,22 +144,20 @@ which is a subgroup of $G/H \times G/K$. \qed \\
 
 \underline{Proof}: We will disprove that $G_1/H_1 \cong G_2/H_2$ by giving a counterexample.
 
-Let $G_1 = \mathbb{Z}, G_2 = \mathbb{Z}, H_1 = 2\mathbb{Z}, H_2 = 3\mathbb{Z}$. Then we see that obviously $G_1 \cong G_2$ and $H_1 \cong \mathbb{Z} \cong H_2$. However, for the quotient groups, we have that 
-$$G_1 / H_1 = \mathbb{Z} / 2\mathbb{Z} \cong \mathbb{Z}_2$$
-and
-$$G_2 / H_2 = \mathbb{Z} / 3\mathbb{Z} \cong Z_3.$$
+First note that since $H_1$ and $H_2$ are subgroups, they must contain at least the identity element. We consider the two trivial subgroups: $H_1 = \{ e_{G_1} \}$ and $H_2 = \{ e_{G_2} \}$. Then we have that $\phi(H_1) = \phi(e_{G_1}) = e_{G_2} = H_2$. So
+\begin{equation}
+	G_1/H_1 \cong G_2/H_2 \iff G_1 \cong G_2.
+\end{equation}
 
-So $G_1 / H_1 \not \cong G_2 / H_2$. We have not explicitly defined our surjective group homomorphism $\phi$ yet. 
+In general, this is not true. So we need to specify $G_1, G_2$, and $\phi : G_1 \mapsto G_2$ so that equation $(1)$ does not hold. Consider $G_1 = \mathbb{Z}_{2}$ and $G_2 = \{e_{G_2}\}$. Clearly $G_1 \not \cong G_2$ since they have different orders: $G_1$ has order $2$ while $G_2$ has order $1$. For $\phi : G_1 \mapsto G_2$, we can just choose the identity homomorphism, i.e. $\phi(g) = e$ for all $g \in G_1$.
 
-All possible homomorphisms from $\mathbb{Z} \mapsto \mathbb{Z}$ are determined by the image of the generator, i.e. $1$. So suppose then that $\phi(1) = n$ for $n \in \mathbb{Z}$. Then the homomorphism is
+We need to verify that the function $\phi$ is a surjective homomorphism. To show it is surjective, let $y \in G_2$. Since $G_2 = \{e_{G_2}\}, y$ clearly must be $e_{G_2}$. We want to show there exist $x \in G_1$ such that $\phi(x) = y$, i.e. $\phi(x) = e_{G_2}$. As we showed earlier, $x = e_{G_1}$ works, i.e. $\phi(e_{G_1}) = e_{G_2}$. To show it is a homomorphism, let $a, b \in G_1$. We then have that
 \begin{align*}
-	\phi(k) &= \phi(k \cdot 1) \\
-	&= k \phi(1) \\
-	&= kn
+	\phi(ab) &= e_{G_2} \\
+	&= e_{G_2} e_{G_2} \\
+	&= \phi(a)\phi(b).
 \end{align*}
-for all $k \in \mathbb{Z}$. Thus, \textit{all} of the possible homomorphisms from $\mathbb{Z} \mapsto \mathbb{Z}$ are of the form $\phi_n : \mathbb{Z} \mapsto \mathbb{Z}$ defined by $\phi_n(k) = kn$ for all $k, n \in \mathbb{Z}$. However, for the purposes of this problem, we are only interested in homomorphisms of $\mathbb{Z}$ onto $\mathbb{Z}$. Since $\mathbb{Z}$ only has two generators: $1$ and $-1$, we have that the two possible onto homomorphisms are
-$$\phi_1 : \mathbb{Z} \mapsto \mathbb{Z}; \phi_1(k) = k$$
-$$\phi_{-1} : \mathbb{Z} \mapsto \mathbb{Z}; \phi_{-1}(k) = -k.$$ 
+So $\phi$ is a homomorphism.
 
 Since we have constructed a specific example showing that $G_1/H_1 \cong G_2/H_2$ does not always hold, we are done. \qed \\\
 
