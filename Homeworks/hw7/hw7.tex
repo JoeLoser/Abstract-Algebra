@@ -33,7 +33,7 @@ where $x \in \mathbb{R}$. \\
 
 4d) Show that $T/U$ is abelian. \\
 
-\underline{Proof}: Note that we have already showed that $U$ is normal in $T$ in part 4c). To show that $T/U$ is abelian, we need to show that $(AU)(BU) = (BU)(AU)$ for all $A, B \in T$.
+\underline{Proof}: Note that we have already showed that $U$ is normal in $T$ in part 4c). To show that $T/U$ is abelian, we need to show that $(AU)(BU) = (BU)(AU)$, i.e. $ABU = BAU$ for all $A, B \in T$.
 
 Let $A =
 \begin{pmatrix}
@@ -81,7 +81,7 @@ a) List the elements in $H + N$ and $H \cap N$.\\
 
 \underline{Solution}: We have that
 \begin{align*}
-	H+N &= \{ h + n \ \vert \ h \in H \text{and} \, n \in N\} \\
+	H+N &= \{ h + n \ \vert \ h \in H \, \text{and} \, n \in N\} \\
 	&= \{ h + n \ \vert \ h \in \langle 4 \rangle \, \text{and} \, n \in \langle 6 \rangle\} \\
 	&= \{ 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22 \} \\
 	&= \langle 2 \rangle
@@ -94,14 +94,14 @@ Remarks: Note that $H + N = \big\langle \gcd(4,6) \big\rangle $ in $\mathbb{Z}_{
 b) List the cosets in $HN/N$, showing the elements in each coset.\\
 
 \underline{Solution}: We know that 
-$$ (H + N) / N := \{ g + n \, \vert \, g \in H + N\}. $$
+$$ (H + N) / N := \{ g + N \, \vert \, g \in H + N\}. $$
 
 So we see that the cosets that partition $H+N$ are the following:
 \begin{align*}
 	0 + N &= \{ 0, 6, 12, 18\} \\
 	2 + N &= \{ 2, 8, 14, 20 \} \\
 	4 + N &= \{ 4, 10, 16, 22\}
-\end{align*}
+\end{align*} \qed \\
 
 c) List the costs in $H/(H \cap N)$, showing the elements in each coset.\\
 
@@ -113,7 +113,7 @@ So we see that the cosets that partition the group $H$ are the following:
 	0 + H \cap N &= \{0, 12\} \\
 	4 + H \cap N &= \{4, 16\}  \\
 	8 + H \cap N &= \{8, 20\}
-\end{align*}
+\end{align*} \qed \\
 
 d) Give the correspondence between $(H+N)/N$ and $H/(H \cap N)$ described in the proof of the Second Isomorphism Theorem. \\
 
@@ -134,7 +134,7 @@ $$G / \ker \phi \cong \phi(G).$$
 
 Since $\phi(G)$ is a subgroup of $G/H \times G/K$ and we want to show $G \cong \phi(G)$, it suffices for us to show that $\ker \phi = \{ e \}$, i.e. $\ker \phi = H \cap K$. 
 
-Let $g \in \ker \phi$. Then $\phi(g) = (gH, gK) = (H, K)$. That is, $gH = H$ and $gK = K$. Thus $g \in H \cap K$ and we have that $\ker \phi \subset H \cap K$. Contrarily, if $g \in H \cap K$ then we clearly see that $\phi(g) = (gH, gK) = (H, K)$ so that $H \cap K \subset \ker \phi$. Thus $\ker \phi = H \cap K$.
+Let $g \in \ker \phi$. Then $\phi(g) = (gH, gK) = (H, K)$. That is, $gH = H$ and $gK = K$. So $g \in H \cap K$ and we have that $\ker \phi \subset H \cap K$. Contrarily, if $g \in H \cap K$ then we clearly see that $\phi(g) = (gH, gK) = (H, K)$ so that $H \cap K \subset \ker \phi$. Thus $\ker \phi = H \cap K$.
 
 Since we have shown that $\ker \phi = H \cap K$, i.e. $\phi$ is one-to-one, we have proven that 
 $$G \cong \phi(G)$$
@@ -164,12 +164,12 @@ Since we have constructed a specific example showing that $G_1/H_1 \cong G_2/H_2
 5) Let $G$ be a group and let $i_g$ be an inner automorphism of $G$ and define a map $G \mapsto Aut(G)$ by $g \mapsto i_g$. Prove that this map is a homomorphism with image $Inn(G)$ and kernel $Z(G)$. Use this result to conclude that 
 $$G/Z(G) \cong Inn(G)$$
 
-\underline{Proof}: Recall that $i_g(x) := gxg^{-1}$. We first show that the map is a homomorphism. Let $a, b \in G$. Then
+\underline{Proof}: Recall that $i_g(x) := gxg^{-1}$ for $g \in G$. We first show that the map is a homomorphism. Let $a, b \in G$. Then
 \begin{align*}
 	i_{ab}(x) &= (ab)x(ab)^{-1} \\
 	&= abxb^{-1}a^{-1} \\
 	&= a(bxb^{-1})a^{-1} \\
-	&= i_a(i_b(x)) \\
+	&= i_a\big(i_b(x)\big) \\
 	&= (i_ai_b)(x)
 \end{align*}
 Since $i_{ab} = i_ai_b$ our map is a homomorphism.
@@ -183,7 +183,7 @@ So clearly the image for our homomorphism is $Inn(G)$ by definition. Next, we sh
 	&= Z(G)
 \end{align*}
 
-By the First Isomorphism Theorem, we conclude that
+By the First Isomorphism Theorem, we conclude that $G/\ker \phi \cong \phi(G)$, i.e.
 $$G/Z(G) \cong Inn(G).$$ \qed \\
 
 \end{document}
