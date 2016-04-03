@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{parskip} % so I don't have to use \noindent everywhere
+\usepackage{mathtools}
+\usepackage[none]{hyphenat} % don't split up words that flow onto next line
+\usepackage{microtype,todonotes}
+\usepackage[a4paper,text={16.5cm,25.2cm},centering]{geometry}
+\usepackage[compact,small]{titlesec}
+\setlength{\parskip}{1.2ex}
+\setlength{\parindent}{0em}
+\DeclareMathOperator{\lcm}{lcm}
+
+% To prevent orphans and widows (https://en.wikipedia.org/wiki/Widows_and_orphans)
+\clubpenalty = 10000
+\widowpenalty = 10000
+\usepackage{kpfonts}
+\usepackage[T1]{fontenc}
+
+\title{Abstract Algebra Homework 8}
+\author{\textit{Joe Loser}}
+\date{April 3, 2016}
+\begin{document}
+\maketitle
+
+This problem set includes problems $2, 24, 28, 34,$ and $38$ from section $16.6$.
+
+2) Let $R$ be the ring of $2 \times 2$ matrices of the form
+$$ \begin{pmatrix}
+	a & b \\
+	0 & 0
+\end{pmatrix},$$ 
+where $a, b \in \mathbb{R}$. Show that although $R$ is a ring that has no identity, we can find a subring $S$ of $R$ with an identity.
+
+\underline{Proof}: \qed \\
+
+24) Let $R$ be a ring with a collection of subrings $\{R_{\alpha}\}$. Prove that $\bigcap R_{\alpha}$ is a subring of $R$. Give an example to show that the union of two subrings cannot be a subring.
+
+\underline{Proof}: \qed \\
+
+28) A ring $R$ is a boolean ring if for every $a \in \mathbb{R}, a^2 = a$. Show that every boolean ring is a commutative ring.
+
+\underline{Proof}: \qed \\
+
+34) Let $p$ be prime. Prove that
+$$Z_{(p)} = \big\{ \frac{a}{b} \big\vert \, a, b \in \mathbb{Z} \, \text{and} \, \gcd(b, p) = 1 \big\} $$
+is a ring. 
+
+\underline{Proof}: \qed \\
+
+38) An element $x$ in a ring is called idempotent if $x^2 = x$. Prove that the only idempotent in an integral domain are $0$ and $1$. Find a ring with a idempotent $x$ not equal to $0$ or $1$. 
+
+\underline{Proof}: \qed \\
+
+\end{document}
