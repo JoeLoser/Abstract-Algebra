@@ -31,21 +31,131 @@ $$ \begin{pmatrix}
 \end{pmatrix},$$ 
 where $a, b \in \mathbb{R}$. Show that although $R$ is a ring that has no identity, we can find a subring $S$ of $R$ with an identity.
 
-\underline{Proof}: \qed \\
+\underline{Proof}: We first show that $R$ has no identity. \todo{Show this}
 
-24) Let $R$ be a ring with a collection of subrings $\{R_{\alpha}\}$. Prove that $\bigcap R_{\alpha}$ is a subring of $R$. Give an example to show that the union of two subrings cannot be a subring.
+We claim that $S =
+\begin{pmatrix}
+	a & 0 \\
+	0 & 0
+\end{pmatrix}$ where $a \in \mathbb{R}$ is a subring of $R$. We will use the Subring Test to show that this is indeed a subring.
 
-\underline{Proof}: \qed \\
+$S$ is clearly nonempty since $a$ is any real number.
 
-28) A ring $R$ is a boolean ring if for every $a \in \mathbb{R}, a^2 = a$. Show that every boolean ring is a commutative ring.
+We now show that for all $r, s \in S, rs \in S$. Let $r = 
+\begin{pmatrix}
+	a & 0 \\
+	0 & 0
+\end{pmatrix}$ and $s =
+\begin{pmatrix}
+	b & 0 \\
+	0 & 0
+\end{pmatrix}$ where $a, b \in \mathbb{R}$. Then we have that 
+\begin{align*}
+	rs &= 
+	\begin{pmatrix}
+		a & 0 \\
+		0 & 0 \\
+	\end{pmatrix}
+	\begin{pmatrix}
+		b & 0 \\
+		0 & 0 \\
+	\end{pmatrix} \\
+	&= \begin{pmatrix}
+		ab & 0 \\
+		0 & 0
+	\end{pmatrix} \\
+	& \in S
+\end{align*} since $ab \in \mathbb{R}$ because $a$ and $b$ are both in $\mathbb{R}$. 
 
-\underline{Proof}: \qed \\
+Next we show that for all $r, s \in S, r - s \in S$. Let $r$ and $s$ be as above. Then
+\begin{align*}
+	r - s &=
+	\begin{pmatrix}
+		a - b & 0 \\ 
+		0 & 0 \\
+	\end{pmatrix} \\
+	& \in S
+\end{align*} since $a - b \in \mathbb{R}$ because both $a$ and $b$ are in $\mathbb{R}$.
+
+Thus we have shown that $S =
+\begin{pmatrix}
+a & 0 \\
+0 & 0
+\end{pmatrix}$ is indeed a subring of $R$. \qed \\
+
+24) Let $R$ be a ring with a collection of subrings $\{R_{\alpha}\}$. Prove that $\bigcap R_{\alpha}$ is a subring of $R$. Give an example to show that the union of two subrings need not be a subring.
+
+\underline{Proof}: Let $S$ be the intersection of a collection of subrings of the ring $R$. That is, $S = \underset{i \in I}{\bigcap} S_i$ where $I$ is an indexed set and each $S_i$ is a subring of $R$. We will use the Subring Test to show that $S$ is indeed a subring of $R$.
+
+We first begin with a claim and its proof to use it later on.
+
+\underline{Claim}: If $S$ is a subring of a ring $R$ then $0 \in S$.
+
+\underline{Proof of Claim}: If $S$ is a subring of $R$ then $S$ is nonempty. Let $x \in S$. Then since $S$ is a ring and has closure under additive inverses and addition, we have that $x + (-x) \in S$. By definition of additive inverses, $x + (-x) = 0$. Thus $0 \in S$.
+
+We now check the conditions of the Subring Test hold.
+
+i) To show that $S$ is nonempty, just apply the result from the claim. Since $0 \in S_i$ for each $i \in I$ we have that $0 \in \underset{i \in I}{\bigcap} S_i$; i.e. $0 \in S$.
+
+ii) Next we show for all $a, b \in S, a - b \in S$. Let $a, b \in S$. By definition of $S$ we see $a, b \in S_i$ for each $i \in I$. By assumption that each $S_i$ is a subring (and so $S_i$ is a ring), we have that $a - b \in S_i$ for each $i \in I$. Then by definition of intersection, this means that $a - b \in \underset{i \in I}{\bigcap} S_i$ for each $i \in I$. That is, $a - b \in S$.
+
+iii) Lastly we show that for all $a, b \in S, ab \in S$. Let $a, b \in S$. By definition of $S$ we see that $a, b \in S_i$ for each $i \in I$. By assumption that each $S_i$ is a subring (and so $S_i$ is a ring), we have that $ab \in S_i$ for each $i \in I$. Then by definition of intersection, this means that $ab \in \underset{i \in I}{\bigcap} S_i$ for each $i \in I$. That is, $ab \in S$.
+
+Thus $S$ is a subring by the Subring Test. \qed 
+
+To give an example to show that the union of two subrings need not be a subring, consider the following:
+$$R = \mathbb{Z} \quad S = \{2n \, \vert \, n \in \mathbb{Z} \} \quad T = \{3n \, \vert \, n \in \mathbb{Z} \}.$$
+Note that $R$ is a ring and $S$ and $T$ are subrings of $R$ (one can easily verify this). We will show that $S \cup T$ is not a subring of $R$. Consider two elements: $2 \in S, 3 \in T$. Clearly both are in $S \cup T$. However $2 + 3 = 5 \not \in S \cup T$. So $S \cup T$ is not a ring (and hence not a subring of R). \qed \\
+
+28) A ring $R$ is a Boolean ring if for every $a \in \mathbb{R}, a^2 = a$. Show that every Boolean ring is a commutative ring.
+
+\underline{Proof}: We know that $R$ is a commutative ring if $\forall a, b \in R, ab = ba$.
+
+Let $a, b \in R$. Notice that since $R$ is a Boolean ring and $a, b \in R$ we have that
+\begin{align*}
+	a + b &= (a+b)^2 \\
+	&= (a+b)(a+b) \\
+	&= a(a+b) + b(a+b) \\
+	&= a^2 + ab + ba + b^2 \\
+	&= a + ab + ba + b^2 \quad \because a^2 = a \quad \text{and} \quad b^2 = b.
+\end{align*}
+By subtracting $a + b$ from both sides we have that $0 = ab + ba$. So $-ab = ba$. We are almost done since we want to show that $ab = ba$. To conclude, we will show that for all $c \in R$, $-c = c$. Let $c \in R$. Then
+\begin{align*}
+	-c &= (-c)^2 \\
+	&= (-c)(-c) \\
+	&= -c(-c) \\
+	&= -(-c^2) \\
+	&= c^2 \\
+	&= c \quad \because \text{R is boolean}.
+\end{align*}
+
+Thus $-ab = ba \implies ab = ba$ since $-c = c$ for all $c \in R$ and both $a$ and $b$ are arbitrary elements in $R$ as well. \qed \\
 
 34) Let $p$ be prime. Prove that
 $$Z_{(p)} = \big\{ \frac{a}{b} \big\vert \, a, b \in \mathbb{Z} \, \text{and} \, \gcd(b, p) = 1 \big\} $$
 is a ring. 
 
-\underline{Proof}: \qed \\
+\underline{Proof}: To show that $Z_{(p)}$ is a ring, we can verify directly by checking all of the properties of a ring using the definition of a ring. Or, better yet, we can show that $Z_{(p)}$ is a subring of a known ring and hence is a ring itself. We will show the latter.
+
+Notice that as sets, $Z_{(p)} \subset \mathbb{Q}$ and $\mathbb{Q}$ is a well-known ring. We will show that $Z_{(p)}$ is a subring of $\mathbb{Q}$ by using the Subring Test.
+
+i) To show that $Z_{(p)}$ is nonempty, simply take $a = 1, b = 1$ which is an element of $Z_{(p)}$ since $\gcd(b, p) = 1$ for any $p$ prime.
+
+ii) Next we show that for all $r, s \in Z_{(p)}, rs \in Z_{(p)}$. Let $r, s \in Z_{(p)}$ So $r = \frac ab, s = \frac cd$ for some $a, b, c, d \in \mathbb{Z}$ and $\gcd(b, p) = \gcd(d, p) = 1$. Then we have that
+\begin{align*}
+	rs &= \frac ab \cdot \frac cd \\
+	&= \frac{ac}{bd}.
+\end{align*}
+Notice that $ac \in \mathbb{Z}, bd \in \mathbb{Z}$. Also $\gcd(bd, p) = 1$ since $\gcd(b, p) = \gcd(d, p) = 1$. Thus $rs = \frac{ab}{cd} \in Z_{(p)}$.
+
+iii) Lastly we show that for all $r, s \in Z_{(p)}, r - s \in Z_{(p)}$. Let $r, s \in Z_{(p)}$ as before in ii). Then 
+\begin{align*}
+	r - s &= \frac ab - \frac cd \\
+	&= \frac{ad-bc}{bd}.
+\end{align*}
+Notice that $ad - bc \in \mathbb{Z}, bd \in \mathbb{Z}$ and $\gcd(bd, p) = 1$ since $\gcd(b, p) = \gcd(d, p) = 1$. Thus $\frac{ad-bc}{bd} \in Z_{(p)}.$
+
+By the Subring Test, we conclude that $Z_{(p)}$ is a subring of $\mathbb{Q}$ and so $Z_{(p)}$ is a ring. \qed \\
 
 38) An element $x$ in a ring is called idempotent if $x^2 = x$. Prove that the only idempotent in an integral domain are $0$ and $1$. Find a ring with a idempotent $x$ not equal to $0$ or $1$. 
 
