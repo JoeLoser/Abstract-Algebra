@@ -31,17 +31,79 @@ $$ \begin{pmatrix}
 \end{pmatrix},$$ 
 where $a, b \in \mathbb{R}$. Show that although $R$ is a ring that has no identity, we can find a subring $S$ of $R$ with an identity.
 
-\underline{Proof}: We first show that $R$ has no identity. \todo{Show this}
+\underline{Proof}: We first show that $R$ has no identity. Suppose for the sake of contradiction that $R$ has an identity which we denote $1_R$. From the definition of $R$ we see that $1_R \in R$ means there exist $a, b \in \mathbb{R}$ such that $1_R = \begin{pmatrix}
+	a & b \\
+	0 & 0
+\end{pmatrix}$. Since the element
+$\begin{pmatrix}
+	1 & 0 \\
+	0 & 0
+\end{pmatrix} \in R$ and $1_R$ is the identity for $R$ we have that
+$$
+	\begin{pmatrix}
+	1 & 0 \\
+	0 & 0
+	\end{pmatrix} \cdot 1_R = 
+	\begin{pmatrix}
+	1 & 0 \\
+	0 & 0
+	\end{pmatrix}.
+$$
+But from the definition of multiplication in $R$ we also have that 
+$$
+	\begin{pmatrix}
+	1 & 0 \\
+	0 & 0
+	\end{pmatrix} \cdot 1_R = 
+	\begin{pmatrix}
+	a & b \\
+	0 & 0
+	\end{pmatrix}.
+$$
+Thus we see that $a = 1, b = 0$. This means that $$1_R = 
+\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}.$$ However, this element $1_R$ is clearly not the identity for $R$. For instance, consider another element, say $
+\begin{pmatrix}
+	0 & 1 \\
+	0 & 0
+\end{pmatrix} \in R$. We have that 
+\begin{equation}
+	1_R \cdot 
+	\begin{pmatrix}
+		0 & 1 \\
+		0 & 0
+	\end{pmatrix} =
+	\begin{pmatrix}
+		0 & 1\\
+		0 & 0
+	\end{pmatrix}.
+\end{equation}
+Also,
+\begin{equation}
+	\begin{pmatrix}
+	0 & 1 \\
+	0 & 0
+	\end{pmatrix}
+	\cdot 1_R =
+	\begin{pmatrix}
+	0 & 0\\
+	0 & 0
+	\end{pmatrix}.
+\end{equation}
 
-We claim that $S =
+Since the right hand side of both $(1)$ and $(2)$ do not agree, we see that $1_R$ cannot be the identity for $R$ which is a contradiction. Thus $R$ is a ring without an identity element.
+
+Even though $R$ has no identity element, we can find a subring $S$ of $R$ which has an identity. We claim that $S =
 \begin{pmatrix}
 	a & 0 \\
 	0 & 0
 \end{pmatrix}$ where $a \in \mathbb{R}$ is a subring of $R$. We will use the Subring Test to show that this is indeed a subring.
 
-$S$ is clearly nonempty since $a$ is any real number.
+i) We first see that $S$ is clearly nonempty since $a$ is any real number.
 
-We now show that for all $r, s \in S, rs \in S$. Let $r = 
+ii) We now show that $rs \in S$ for all $r, s \in S$. Let $r = 
 \begin{pmatrix}
 	a & 0 \\
 	0 & 0
@@ -67,7 +129,7 @@ We now show that for all $r, s \in S, rs \in S$. Let $r =
 	& \in S
 \end{align*} since $ab \in \mathbb{R}$ because $a$ and $b$ are both in $\mathbb{R}$. 
 
-Next we show that for all $r, s \in S, r - s \in S$. Let $r$ and $s$ be as above. Then
+iii) Lastly, we show that $r - s \in S$ for all $r, s \in S$. Let $r$ and $s$ be as above in ii). Then
 \begin{align*}
 	r - s &=
 	\begin{pmatrix}
@@ -81,7 +143,7 @@ Thus we have shown that $S =
 \begin{pmatrix}
 a & 0 \\
 0 & 0
-\end{pmatrix}$ is indeed a subring of $R$. \qed \\
+\end{pmatrix}$ is indeed a subring of $R$ by the Subring Test. \qed \\
 
 24) Let $R$ be a ring with a collection of subrings $\{R_{\alpha}\}$. Prove that $\bigcap R_{\alpha}$ is a subring of $R$. Give an example to show that the union of two subrings need not be a subring.
 
@@ -91,7 +153,7 @@ We first begin with a claim and its proof to use it later on.
 
 \underline{Claim}: If $S$ is a subring of a ring $R$ then $0 \in S$.
 
-\underline{Proof of Claim}: If $S$ is a subring of $R$ then $S$ is nonempty. Let $x \in S$. Then since $S$ is a ring and has closure under additive inverses and addition, we have that $x + (-x) \in S$. By definition of additive inverses, $x + (-x) = 0$. Thus $0 \in S$.
+\underline{Proof of Claim}: If $S$ is a subring of $R$ then $S$ is nonempty. Let $x \in S$. Then since $S$ is a ring and has closure under additive inverses and addition, we have that $x + (-x) \in S$. By definition of additive inverses, $x + (-x) = 0$. Thus $0 \in S$. \pagebreak
 
 We now check the conditions of the Subring Test hold.
 
@@ -105,11 +167,11 @@ Thus $S$ is a subring by the Subring Test.
 
 To give an example to show that the union of two subrings need not be a subring, consider the following:
 $$R = \mathbb{Z} \quad S = \{2n \, \vert \, n \in \mathbb{Z} \} \quad T = \{3n \, \vert \, n \in \mathbb{Z} \}.$$
-Note that $R$ is a ring and $S$ and $T$ are subrings of $R$ (one can easily verify this). We will show that $S \cup T$ is not a subring of $R$. Consider two elements: $2 \in S, 3 \in T$. Clearly both are in $S \cup T$. However $2 + 3 = 5 \not \in S \cup T$. So $S \cup T$ is not a ring (and hence not a subring of R). \qed \\
+Note that $R$ is a ring and $S$ and $T$ are subrings of $R$ (one can easily verify this -- see Example 16.9 in the text). We will show that $S \cup T$ is not a subring of $R$. Consider two elements: $2 \in S, 3 \in T$. Clearly both are in $S \cup T$. However $2 + 3 = 5 \not \in S \cup T$. So $S \cup T$ is not a ring (and hence not a subring of R). \qed
 
 28) A ring $R$ is a Boolean ring if for every $a \in \mathbb{R}, a^2 = a$. Show that every Boolean ring is a commutative ring.
 
-\underline{Proof}: We know that $R$ is a commutative ring if $\forall a, b \in R, ab = ba$.
+\underline{Proof}: We know that $R$ is a commutative ring if $ab = ba$ for all $a, b \in R$.
 
 Let $a, b \in R$. Notice that since $R$ is a Boolean ring and $a, b \in R$ we have that
 \begin{align*}
