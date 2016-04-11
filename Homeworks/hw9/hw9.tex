@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{parskip} % so I don't have to use \noindent everywhere
+\usepackage{mathtools}
+\usepackage[none]{hyphenat} % don't split up words that flow onto next line
+\usepackage{microtype,todonotes}
+\usepackage[a4paper,text={16.5cm,25.2cm},centering]{geometry}
+\usepackage[compact,small]{titlesec}
+\setlength{\parskip}{1.2ex}
+\setlength{\parindent}{0em}
+
+% For addition and multiplication tables
+\usepackage{dcolumn}
+\newcolumntype{2}{D{.}{}{2.0}}
+
+% To prevent orphans and widows (https://en.wikipedia.org/wiki/Widows_and_orphans)
+\clubpenalty = 10000
+\widowpenalty = 10000
+\usepackage{kpfonts}
+\usepackage[T1]{fontenc}
+
+\title{Abstract Algebra Homework 9}
+\author{\textit{Joe Loser}}
+\date{April 11, 2016}
+\begin{document}
+\maketitle
+
+This problem set includes problems $5b, 8, 18c$, and $27$ from section $16.6$.
+
+5b) For the given ring $R$ with an ideal $I$, give an addition and multiplication table for $R/I$.
+
+\underline{Solution}: Recall that 
+$$R/I := \{ r+I \, \vert \, r \in R \}.$$
+
+We can easily see that the three elements of $R/I$ are the following:
+\begin{align*}
+	0 + I &= \{ 0, 3, 6, 9 \} \\
+	1 + I &= \{ 1, 4, 7, 10 \} \\
+	2 + I &= \{ 2, 5, 8, 11 \}.
+\end{align*}
+
+Below is the addition table for $R/I$. Note that it is implicit, but worth noting, that we are talking about the addition of the three cosets here in $R/I$.
+
+\begin{center}
+	\begin{tabular}{r|*{4}{2|}}
+		+ & 0 & 1 & 2 \\
+		\hline
+		0 & 0 & 1 & 2 \\ 
+		\hline
+		1 & 1 & 2 & 0  \\ 
+		\hline
+		2 & 2 & 0 & 1
+	\end{tabular}
+\end{center}
+
+Similarly, here is the multiplication table for $R/I$. Again, we are talking about multiplication of the cosets in $R/I$.
+
+\begin{center}
+	\begin{tabular}{r|*{4}{2|}}
+		* & 0 & 1 & 2 \\
+		\hline
+		0 & 0 & 0 & 0 \\ 
+		\hline
+		1 & 0 & 1 & 2  \\ 
+		\hline
+		2 & 0 & 2 & 1
+	\end{tabular}
+\end{center}
+\qed \\
+
+\end{document}
