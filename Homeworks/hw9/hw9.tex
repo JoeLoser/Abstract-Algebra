@@ -147,4 +147,38 @@ So $es = s$. We now show that that $se = s$ as well.
 
 Therefore $e \in S$ and $es = s = se$ for all $s \in S$. Hence $e$ is a multiplicative identity for the ring $S$. However, $1_S$ is an identity as well. We have shown in class that if a ring has a multiplicative identity, it must be unique. We did this by showing that the set of units in a ring is a group and we know that the identity in a group is unique, hence the $1$ in a ring is unique. Thus, it must be the case that $e = 1_S$. Since we defined $e$ as $e = \phi(1_R)$ we conclude that $\phi(1_R) = 1_S$. \qed \\
 
+27) Let $R$ be a commutative ring. An element $a \in R$ is nilpotent if $a^n = 0$ for some positive integer $n$. Show that the set of all nilpotent elements forms an ideal in $R$. 
+
+\underline{Proof}: Let $N$ be the set of all nilpotent elements, i.e. the nilradical. To show $N$ is an ideal, we need to show
+
+(i) $(N, +) < (R, +)$ \\
+(ii) $rx \in N$ and $xr \in N$ for all $r \in R$ and for all $x \in N$.
+
+Clearly $N$ is nonempty as $0 = 0^1 \in N$. Let $x, y \in N$. Then $x^n = y^m = 0$ for some $n, m \in \mathbb{N}$. By the Binomial Theorem we have that
+$$ (x+y)^{n+m} = \sum_{k=0}^{n+m} { {n+m}\choose{k} } x^k y^{n+m-k}.$$
+
+Note that if $k \geq n, x^k = 0$. So $x^ky^{n+m-k} = 0$. Similarly, if $k < n, y^{n+m-k} = 0$ so $x^ky^{n+m-k} = 0$. Thus $(x+y)^{n+m} =0$ and hence $(x+y) \in N$. Moreover, we have that 
+\begin{align*}
+	(-x)^n &= (-1)^n x^n \\
+	&= (-1)^n \cdot 0 \\
+	&= 0.
+\end{align*}
+So $-x \in N$. Thus $N$ is an additive subgroup of $R$.
+
+Lastly, let $r \in R$ and $x \in N$. Since $R$ is commutative, we have that
+\begin{align*}
+	(rx)^n &= r^n x^n \\
+	&= r^n \cdot 0 \\
+	&= 0.
+\end{align*}
+Similarly, 
+\begin{align*}
+	(xr)^n &= x^n r^n \\
+	&= 0 \cdot r^n \\
+	&= 0.
+\end{align*}
+So both $rx \in N$ and $xr \in N$.
+
+Since $N$ is an additive subgroup of $R$ and $N$ absorbs $R$ on the left and right, $N$ is an ideal of $R$. \qed \\
+
 \end{document}
