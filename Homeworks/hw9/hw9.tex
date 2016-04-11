@@ -125,4 +125,26 @@ If $c = 0$ then we have $2 = 3d^2$. So $d = \sqrt{\frac 23} \not \in \mathbb{Q}$
 
 Thus $\phi(\sqrt{2}) = c + d\sqrt{3}$ for $c, d \in \mathbb{Q}$. But we have shown that we cannot find a suitable $c$ or $d \in \mathbb{Q}$ such that this is satisfied. Hence we have shown that there is no isomorphism from $\mathbb{Q}(\sqrt{2})$ to $\mathbb{Q}(\sqrt{3})$. Therefore, as rings, $\mathbb{Q}(\sqrt{2}) \not \cong \mathbb{Q}(\sqrt{3})$. \qed \\
 
+\pagebreak 18c) Let $\phi : R \to S$ be a ring homomorphism. Let $1_R$ and $1_S$ be the identities for $R$ and $S$, respectively. If $\phi$ is onto, show that $\phi(1_R) = 1_S$. 
+
+\underline{Proof}: Let $R$ and $S$ be rings with identities $1_R$ and $1_S$. Suppose $\phi$ is a ring homomorphism from $R$ to $S$.
+
+Let $e = \phi(1_R)$. So $e \in S$. Also let $s \in S$. Since $\phi$ is onto, there exists an element $r \in R$ so that $\phi(r) = s$. Then we have that
+\begin{align*}
+	es &= \phi(1_R) \phi(r) \\
+	&= \phi(1_R \cdot r) \\
+	&= \phi(r) \\
+	&= s.
+\end{align*}
+So $es = s$. We now show that that $se = s$ as well. 
+
+\begin{align*}
+	se &= \phi(r) \phi(1_R) \\
+	&= \phi(r \cdot 1_R) \\
+	&= \phi(r) \\
+	&= s.
+\end{align*}
+
+Therefore $e \in S$ and $es = s = se$ for all $s \in S$. Hence $e$ is a multiplicative identity for the ring $S$. However, $1_S$ is an identity as well. We have shown in class that if a ring has a multiplicative identity, it must be unique. We did this by showing that the set of units in a ring is a group and we know that the identity in a group is unique, hence the $1$ in a ring is unique. Thus, it must be the case that $e = 1_S$. Since we defined $e$ as $e = \phi(1_R)$ we conclude that $\phi(1_R) = 1_S$. \qed \\
+
 \end{document}
