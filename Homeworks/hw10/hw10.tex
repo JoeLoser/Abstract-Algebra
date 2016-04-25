@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{parskip} % so I don't have to use \noindent everywhere
+\usepackage{mathtools}
+\usepackage[none]{hyphenat} % don't split up words that flow onto next line
+\usepackage{microtype,todonotes}
+\usepackage[a4paper,text={16.5cm,25.2cm},centering]{geometry}
+\usepackage[compact,small]{titlesec}
+\usepackage{polynom} % Polynomial long division
+\setlength{\parskip}{1.2ex}
+\setlength{\parindent}{0em}
+
+% For addition and multiplication tables
+\usepackage{dcolumn}
+\newcolumntype{2}{D{.}{}{2.0}}
+
+% To prevent orphans and widows (https://en.wikipedia.org/wiki/Widows_and_orphans)
+\clubpenalty = 10000
+\widowpenalty = 10000
+\usepackage{kpfonts}
+\usepackage[T1]{fontenc}
+
+\title{Abstract Algebra Homework 10}
+\author{\textit{Joe Loser}}
+\date{April 24, 2016}
+\begin{document}
+\maketitle
+
+This problem set includes problems $3b, 5b, 12$, and an extra problem from section $17.4$.
+
+3) Use the division algorithm to find $q(x)$ and $r(x)$ such that $a(x) = q(x)b(x) + r(x)$ with $\deg r(x) < \deg b(x)$.
+
+3b) $a(x) = 6x^4-2x^3+x^2-3x+1, b(x) = x^2 + x - 2$ in $\mathbb{Z}_7[x]$
+
+\underline{Solution}: Performing long division, we have  $$\polylongdiv{6x^4-2x^3+x^2-3x+1}{x^2+x-2}$$
+
+So we have that
+\begin{align*}
+	a(x) &= (6x^2-8x+21)(x^2+x-2) - 40x + 43 \\
+	&= (6x^2+6x)(x^2+x-2) + 2x + 1.
+\end{align*}
+
+Thus $q(x) = 6x^2 + 6x$ and $r(x) = 2x + 1$. \qed \\
+
+5) Find all of the zeros of the given polynomial.
+
+5b) $p(x) := 3x^3-4x^2-x+4$ in $\mathbb{Z}_5$
+
+\underline{Solution}: We first find a root of $p(x)$ by looking at $p(0), p(1), p(2), p(3)$, and $p(4)$. We see that
+$\\p(0) = 4 \\
+p(1) = 3 - 5 + 4 = 2 \\
+p(2) = 24 - 16 + 2 = 10 \equiv 0 \\
+p(3) = 81-36+1 \equiv 1-1+1 \equiv 1$ and \\
+$p(4) = 3(64)-64 = 2(64) = 128 \equiv 3$. \\
+
+So $x = 2$ is a root of $p(x)$. Performing the long division, we have that
+$$ \polylongdiv{3x^3-4x^2-x+4}{x-2} $$
+Note that $10 \equiv 0$ so $r(x) = 0$. Thus 
+\begin{equation}
+	p(x) = (3x^2+2x+3)(x-2)
+\end{equation}
+
+To further see that we cannot factorize this any more, we look to see the roots of $q(x) := (3x^2+2x+3)$ in $\mathbb{Z}_5$. We have that 
+$\\q(0) = 3 \\
+q(1) = 8 \equiv 3 \\
+q(2) = 12 + 4 + 3 \equiv 19 \equiv 4 \\
+q(3) = 3(9) + 6 + 3 = 27 + 9 = 36 \equiv 1 \\
+q(4) = 3(16) + 8 + 3 \equiv 3(1) + 3 + 3 \equiv 4$ \\
+
+So $q(x)$ cannot be factorized any much. Thus we see that the only factorization of $p(x)$ in $\mathbb{Z}_5$ is as seen in equation $(1)$. Hence the only root of $p(x)$ is $x = 2$. \qed \\
+
+12) If $F$ is a field, show that $F[x_1, \cdots, x_n]$ is an integral domain.
+
+\underline{Proof}: 
+
+\end{document}
