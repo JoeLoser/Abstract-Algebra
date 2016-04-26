@@ -71,6 +71,20 @@ So $q(x)$ cannot be factorized any much. Thus we see that the only factorization
 
 12) If $F$ is a field, show that $F[x_1, \cdots, x_n]$ is an integral domain.
 
-\underline{Proof}: 
+\underline{Proof}: Note that since $F$ is a field, $F$ is also an integral domain. Recall by definition we have that $$F[x_1, x_2] = (F[x_1])[x_2].$$ Without loss of generality, we will assume that $F[x_1, x_2]$ is the same as $F[x_2, x_1]$. We now proceed by induction.
+
+i) Base Case: $n = 1$ \\
+By Corollary R19 in class, we immediately have that $F[x_1]$ is an integral domain.
+
+ii) Induction Step \\
+Assume that $F[x_1, \cdots, x_{n-1}]$ is an integral domain. Then we show that $F[x_1 \cdots x_n]$ is an integral domain. We have that
+$$ F[x_1, \cdots, x_n] = \big( F[x_1, \cdots ,x_{n-1}] \big) [x_n].$$
+
+Note that $\big(F[x_1, \cdots ,x_{n-1}]\big)$ is an integral domain and adjoining another variable, $x_n$, still makes $F[x_1, \cdots ,x_n]$ an integral domain by the induction hypothesis. \qed \\
+
+E1) Write $\mathbb{Z}[\sqrt{7}]$ as a quotient ring of the polynomial ring $\mathbb{Z}[x]$ and then use this to find a familiar ring isomorphic to
+$$\frac{\mathbb{Z}[\sqrt{7}]}{<8-\sqrt{7}>}.$$
+
+\underline{Solution}:
 
 \end{document}
