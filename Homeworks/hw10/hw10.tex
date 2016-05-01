@@ -30,44 +30,42 @@ This problem set includes problems $3b, 5b, 12$, and an extra problem from secti
 
 3) Use the division algorithm to find $q(x)$ and $r(x)$ such that $a(x) = q(x)b(x) + r(x)$ with $\deg r(x) < \deg b(x)$.
 
-3b) $a(x) = 6x^4-2x^3+x^2-3x+1, b(x) = x^2 + x - 2$ in $\mathbb{Z}_7[x]$
+3b) $a(x) = 6x^4-2x^3+x^2-3x+1, b(x) = x^2 + x - 2$ in $\mathbb{Z}_7[x]$.
 
 \underline{Solution}: Performing long division, we have  $$\polylongdiv{6x^4-2x^3+x^2-3x+1}{x^2+x-2}$$
 
 So we have that
 \begin{align*}
 	a(x) &= (6x^2-8x+21)(x^2+x-2) - 40x + 43 \\
-	&= (6x^2+6x)(x^2+x-2) + 2x + 1.
+	&\equiv (6x^2+6x)(x^2+x-2) + 2x + 1.
 \end{align*}
 
 Thus $q(x) = 6x^2 + 6x$ and $r(x) = 2x + 1$. \qed \\
 
-5) Find all of the zeros of the given polynomial.
-
-5b) $p(x) := 3x^3-4x^2-x+4$ in $\mathbb{Z}_5$
+5b) Find all of the zeros of $p(x) := 3x^3-4x^2-x+4$ in $\mathbb{Z}_5$.
 
 \underline{Solution}: We first find a root of $p(x)$ by looking at $p(0), p(1), p(2), p(3)$, and $p(4)$. We see that
-$\\p(0) = 4 \\
-p(1) = 3 - 5 + 4 = 2 \\
+$\\p(0) = 4 \neq 0 \\
+p(1) = 3 - 5 + 4 = 2 \neq 0 \\
 p(2) = 24 - 16 + 2 = 10 \equiv 0 \\
-p(3) = 81-36+1 \equiv 1-1+1 \equiv 1$ and \\
-$p(4) = 3(64)-64 = 2(64) = 128 \equiv 3$. \\
+p(3) = 81-36+1 \equiv 1-1+1 \equiv 1 \neq 0$ and \\
+$p(4) = 3(64)-64 = 2(64) = 128 \equiv 3 \neq 0$. 
 
-So $x = 2$ is a root of $p(x)$. Performing the long division, we have that
+So $x = 2$ is a root of $p(x)$. By Corollary R21, $2$ is a root of $p(x) \iff x-2 \, \vert \, p(x)$. Performing the long division, we have that
 $$ \polylongdiv{3x^3-4x^2-x+4}{x-2} $$
 Note that $10 \equiv 0$ so $r(x) = 0$. Thus 
 \begin{equation}
 	p(x) = (3x^2+2x+3)(x-2)
 \end{equation}
 
-To further see that we cannot factorize this any more, we look to see the roots of $q(x) := (3x^2+2x+3)$ in $\mathbb{Z}_5$. We have that 
-$\\q(0) = 3 \\
-q(1) = 8 \equiv 3 \\
-q(2) = 12 + 4 + 3 \equiv 19 \equiv 4 \\
-q(3) = 3(9) + 6 + 3 = 27 + 9 = 36 \equiv 1 \\
-q(4) = 3(16) + 8 + 3 \equiv 3(1) + 3 + 3 \equiv 4$ \\
+To further see that we cannot factorize this any more, we look to see if there are any roots of $q(x) := (3x^2+2x+3)$ in $\mathbb{Z}_5$. We have that 
+$\\q(0) = 3 \neq 0 \\
+q(1) = 8 \equiv 3 \neq 0 \\
+q(2) = 12 + 4 + 3 \equiv 19 \equiv 4 \neq 0 \\
+q(3) = 3(9) + 6 + 3 = 27 + 9 = 36 \equiv 1 \neq 0 \\
+q(4) = 3(16) + 8 + 3 \equiv 3(1) + 3 + 3 \equiv 4 \neq 0$ \\
 
-So $q(x)$ cannot be factorized any much. Thus we see that the only factorization of $p(x)$ in $\mathbb{Z}_5$ is as seen in equation $(1)$. Hence the only root of $p(x)$ is $x = 2$. \qed \\
+So $q(x)$ cannot be factorized any more. Thus we see that the only factorization of $p(x)$ in $\mathbb{Z}_5$ is as seen in equation $(1)$. Hence the only root of $p(x)$ is $x = 2$. \qed \\
 
 12) If $F$ is a field, show that $F[x_1, \cdots, x_n]$ is an integral domain.
 
@@ -77,14 +75,89 @@ i) Base Case: $n = 1$ \\
 By Corollary R19 in class, we immediately have that $F[x_1]$ is an integral domain.
 
 ii) Induction Step \\
-Assume that $F[x_1, \cdots, x_{n-1}]$ is an integral domain. Then we show that $F[x_1 \cdots x_n]$ is an integral domain. We have that
+Assume that $F[x_1, \cdots, x_{n-1}]$ is an integral domain. Then we show that $F[x_1, \cdots ,x_n]$ is an integral domain. We have that
 $$ F[x_1, \cdots, x_n] = \big( F[x_1, \cdots ,x_{n-1}] \big) [x_n].$$
 
 Note that $\big(F[x_1, \cdots ,x_{n-1}]\big)$ is an integral domain and adjoining another variable, $x_n$, still makes $F[x_1, \cdots ,x_n]$ an integral domain by the induction hypothesis. \qed \\
 
 E1) Write $\mathbb{Z}[\sqrt{7}]$ as a quotient ring of the polynomial ring $\mathbb{Z}[x]$ and then use this to find a familiar ring isomorphic to
-$$\frac{\mathbb{Z}[\sqrt{7}]}{<8-\sqrt{7}>}.$$
+$$R := \frac{\mathbb{Z}[\sqrt{7}]}{<8-\sqrt{7}>}.$$
 
-\underline{Solution}:
+\underline{Solution}: First recall that for any integer $n \in \mathbb{Z}$ we have that
+$$ \mathbb{Z}[\sqrt{n}] := \{ a+b\sqrt{n} \, \vert \, a, b, \in \mathbb{Z} \}. $$
+
+Note that $x^2 - 7 = 0$ i.e. $x = \sqrt{7}$. Define $\phi: \mathbb{Z}[x] \to \mathbb{Z}[\sqrt{7}]$ by $\phi(f(x)) = f(\sqrt{7})$. We now show that $\phi$ is a ring homomorphism and is onto.
+
+Let $a, b, \in \mathbb{Z}[x]$. Then we have that
+\begin{align*}
+	\phi(a+b) &= (a+b)(\sqrt{7}) \\
+	&= a(\sqrt{7}) + b(\sqrt{7}) \\
+	&= \phi(a) + \phi(b).
+\end{align*}
+Also,
+\begin{align*}
+	\phi(a \cdot b) &= (a \cdot b)(\sqrt{7}) \\
+	&= a(\sqrt{7}) \cdot b(\sqrt{7}) \\
+	&= \phi(a) \cdot \phi(b).
+\end{align*}
+So $\phi$ is a ring homomorphism.
+
+Next we determine the kernel of $\phi$. We see that
+\begin{align*}
+	\ker \phi &= \{f(x) \in \mathbb{Z}[x] \, \vert \, f(\sqrt{7}) = 0 \} \\
+	&= \{ g(x) \cdot (x^2 -7) \, \vert \, g(x) \in \mathbb{Z}[x] \} \\
+	&= (x^2-7) \mathbb{Z}[x].
+\end{align*}
+
+To show $\phi$ is onto, note every element of $\mathbb{Z}[\sqrt{7}]$ is of the form $a + b\sqrt{7}$ where $a, b \in \mathbb{Z}$ and $a + b\sqrt{7} = \phi(a+bx)$. Thus $\phi$ is onto.
+
+Applying the First Isomorphism Theorem, we see that
+$$ \mathbb{Z}[\sqrt{7}] \cong \frac{\mathbb{Z}[x]}{(x^2-7)\mathbb{Z}[x]}. $$
+Using this expression, we now have that
+$$R \cong \frac{\frac{\mathbb{Z}[x]}{(x^2-7)\mathbb{Z}[x]}}
+{(8-x)\mathbb{Z}[x]}.  $$
+
+Trying to get things into a form where we can use the Third Isomorphism Theorem, we get
+$$R \cong \frac{\frac{\mathbb{Z}[x]}{(x^2-7)\mathbb{Z}[x]}}
+{\frac{(8-x, x^2-7)\mathbb{Z}[x]}{(x^2-7)\mathbb{Z}[x]}}.  $$
+
+Applying the Third Isomorphism now yields
+$$ R \cong \frac{\mathbb{Z}[x]}{(8-x, x^2-7)\mathbb{Z}[x]}. $$
+
+Now we try to make $8-x = 0$ i.e. $x = 8$. Define a map $\psi : \mathbb{Z}[x] \to \mathbb{Z}[8]$ by $\psi(p(x)) = p(8)$. First note that adjoining by $8$ does not give us anything new. So $\mathbb{Z}[8] = \mathbb{Z}$. We now show that $\psi$ is indeed a ring homomorphism.
+
+Let $a, b \in \mathbb{Z}[x]$. Then
+\begin{align*}
+	\psi(a+b) &= (a+b)(8) \\
+	&= a(8) + b(8) \\
+	&= \psi(a) + \psi(b).
+\end{align*}
+Also,
+\begin{align*}
+	\psi(a \cdot b) &= (a \cdot b)(8) \\
+	&= a(8) \cdot b(8) \\
+	&= \psi(a) \cdot \psi(b).
+\end{align*}
+So $\psi$ is a ring homomorphism.
+
+We can find the kernel of $\psi$ by:
+\begin{align*}
+		\ker \psi &= \{f(x) \in \mathbb{Z}[x] \, \vert \, f(8) = 0 \} \\
+		&= \{ g(x) \cdot (8-x) \, \vert \, g(x) \in \mathbb{Z}[x] \} \\
+		&= (8-x) \mathbb{Z}[x].
+\end{align*}
+
+To show $\psi$ is onto, note every element of $\mathbb{Z}[8]$ is of the form $a + b(8)$ where $a, b \in \mathbb{Z}$ and $a + b(8) = \psi(a+bx)$. Thus $\psi$ is onto.
+
+Note that
+$$ (8-x, x^2-7)\mathbb{Z}[x] = \{ (8-x)a(x) + (x^2-7)b(x) \, \vert \, a(x), b(x) \in \mathbb{Z}[x]\}. $$
+Applying our mapping $\psi$ now yields
+\begin{align*}
+	R &\cong \frac{\mathbb{Z}}{(8-8, 8^2 - 7)\mathbb{Z}} \\
+	&=\frac{\mathbb{Z}}{(0, 57)\mathbb{Z}} \\
+	&\cong \frac{\mathbb{Z}}{57\mathbb{Z}} \\
+	&\cong Z_{57}.
+\end{align*}
+\qed \\
 
 \end{document}
