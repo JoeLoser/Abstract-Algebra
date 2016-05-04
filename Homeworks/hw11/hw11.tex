@@ -22,20 +22,22 @@
 \begin{document}
 \maketitle
 
-This problem set includes problems $3c, 4b, 24$, and an extra problem from section $17.4$.
+This problem set includes problems $3c, 4b, 24$, and an extra problem from section $17.4$. \\
 
 3) Use the division algorithm to find $q(x)$ and $r(x)$ such that $a(x) = q(x)b(x) + r(x)$ with $\deg r(x) < \deg b(x)$.
 
 3c) $a(x) = 4x^5-x^3+x^2+4$ and $b(x) = x^3-2$ where $a(x), b(x) \in \mathbb{Z}_5[x]$.
 
-\underline{Solution}: Performing long division, we have
+\underline{Solution}: First note that in $\mathbb{Z}_5[x], a(x) \equiv 4x^5+4x^3+x^2+4$ and $b(x) \equiv x^3 + 3$.
 
-$$\polylongdiv{4x^5-x^3+x^2+4}{x^3-2}$$
+Now performing long division, we have
+
+$$\polylongdiv{4x^5+4x^3+x^2+4}{x^3+3}$$
 
 Thus,
 \begin{align*}
-	a(x) &= (4x^2-1) \cdot (x^3-2) + (9x^2+2) \\
-	&\equiv (4x^2-1) \cdot (x^3-2) + (4x^2+2).
+	a(x) &= (4x^2+4) \cdot (x^3+3) + (-11x^2-8) \\
+	&\equiv (4x^2+4) \cdot (x^3+3) + (4x^2+2).
 \end{align*} 
 \qed \\
 
@@ -43,48 +45,66 @@ Thus,
 
 4b) $p(x) = x^3+x^2-x+1$ and $q(x) = x^3+x-1$ where $p(x), q(x) \in \mathbb{Z}_2[x]$.
 
-Performing the first stage of long division, we have that
-$$\polylongdiv{x^3+x-1}{x^3+x^2-x+1}$$
+First note that $\mathbb{Z}_2[x]$, $p(x) \equiv x^3 + x^2 + x + 1$ and $q(x) \equiv x^3 + x + 1$.
 
-Note that in $\mathbb{Z}_2[x], -x^2+2x-2 \equiv -x^2$. So 
+Performing the first stage of long division, we have that
+$$\polylongdiv{x^3+x+1}{x^3+x^2+x+1}$$
+
+Note that in $\mathbb{Z}_2[x], -x^2 \equiv x^2$ and $2x^2 \equiv 0$. So 
 \begin{equation}
-	x^3 + x -1 = 1 \cdot (x^3+x^2-x+1) + (-x^2).
+	x^3 + x + 1 = 1 \cdot (x^3+x^2+x+1) + (x^2).
 \end{equation}
 
 In the second stage of long division, we get
-$$\polylongdiv{x^3+x^2-x+1}{-x^2}$$
+$$\polylongdiv{x^3+x^2+x+1}{x^2}$$
 
-So
+So we have that
 \begin{equation}
-	x^3+x^2-x+1 = (-x-1) \cdot (-x^2) + (-x+1).
+	x^3+x^2+x+1 = (x+1) \cdot (x^2) + (x+1).
 \end{equation}
 
 In the third stage, we get
-$$\polylongdiv{-x^2}{-x+1}$$
+$$\polylongdiv{x^2}{x+1}$$
 
-So
+Then
 \begin{equation}
-	-x^2 = (-x+1) \cdot (x+1) + (-1).
+	x^2 = (x+1) \cdot (x+1) + (1).
 \end{equation}
 
 In the last stage of long division, we have
-$$\polylongdiv{-x+1}{-1}$$
+$$\polylongdiv{x+1}{1}$$
 
 So 
 \begin{equation}
-	-x+1 = (-1) \cdot (x-1) + 0.
+	x+1 = (1) \cdot (x+1) + 0.
 \end{equation}
 
-Thus $\gcd(p(x), q(x)) = -1$. Performing the back substitution, we have the following \todo{finish back sub}
+Thus $\gcd(p(x), q(x)) = 1$. Performing the back substitution, we have the following 
 \begin{align*}
-	-1 &= -x^2 - (x+1)(-x+1) \\
-	&= -x^2 - (x+1) \big( (x^3+x^2-x+1) - (-x-1)(-x^2) \big) \\
-	%&= -x^2 - (x+1) \big( (x^3+x-1-x^2) - (x+1)(-x^2) \big) \\
-	%&= -x^2 - (x+1)(x^3+x-1-x^2) + 2(x+1)(-x^2) \\
-	&= (x^3+x-1) - (x^3+x^2-x+1) - (x+1) \big[ (x^3+x^2-x+1) - (-x-1) \big( (x^3+x-1) - (x^3+x^2-x+1) \big) \big] \\
-	%&= x^2 - (x+1) \big[ (x^3+x^2-x+1) - (-x-1)(-x^2) \big] \\
+	1 &= x^2 - (x+1)(x+1) \\
+	&= x^2 - (x+1) [(x^3+x^2+x+1) - x^2(x+1)] \\
+	&= x^2 + (x+1)(x^3+x^2+x+1) + x^2(x+1)^2 \\
+	&= x^2 \big(1+(x+1)^2 \big) + (x+1)(x^3+x^2+x+1) \\
+	&= [x^3+x+1 + (x^3+x^2+x+1)](x^2) + (x+1)(x^3+x^2+x+1) \\
+	&= (x^3+x^2+x+1)(x^2+x+1) + (x^2)(x^3+x+1).
 \end{align*}
 
+Thus
+\begin{align*}
+	1 &= (x^2+x+1)(x^3+x^2+x+1) + (x^2)(x^3+x+1) \\
+	&= a(x)p(x) + b(x)q(x).
+\end{align*}
+
+To check this holds in $\mathbb{Z}_2[x]$, we multiply everything out. We get that
+\begin{align*}
+	1 &= (x^2+x+1)(x^3+x^2+x+1) + (x^2)(x^3+x+1) \\
+	&= x^5 + x^4 + x^3 + x^2 + x^4 + x^3 + x^2 + x + x^3 + x^2 + x + 1 + x^5 + x^3 + x^2 \\
+	&= 2x^5 + 2x^4 + 4x^3 + 4x^2 + 2x + 1 \\
+	&\equiv 1.
+\end{align*} 
+\qed \\
+
+\pagebreak 
 24) Show that $x^p - x$ has $p$ distinct zeros in $\mathbb{Z}_p$ for any prime $p$. Conclude that 
 $$x^p - x = x(x-1)(x-2) \cdots (x-(p-1)).$$
 
@@ -96,11 +116,77 @@ E1) Construct a field with $8$ elements.
 \underline{Solution}: Since $8 = 2^3$ we start with a field $\mathbb{Z}_2$ of characteristic $2$ and look for an irreducible polynomial of degree $3$ in $\mathbb{Z}_2[x]$. Such a polynomial is $p(x) = x^3+x+1$. 
 
 We will show that
-$$K := \frac{\mathbb{Z}_2[x]}{<x^3+x+1>}$$
+$$K := \frac{\mathbb{Z}_2[x]}{\langle x^3+x+1 \rangle}$$
 is a field of $8$ elements.
 
-To see why $p(x)$ is irreducible in $\mathbb{Z}_2[x]$, since it of degree $3$ or lower, we can look at all of the roots in $mathbb{Z}_2$. We have that $g(0) = 1$ and $g(1) = 3 \equiv 1$. So neither $0$ or $1$ are a root of $p(x)$. Hence we see that we $p(x)$ is irreducible over $\mathbb{Z}_2[x]$.
+To see why $p(x)$ is irreducible in $\mathbb{Z}_2[x]$, since it of degree $3$ or lower, we can look at all of the roots in $\mathbb{Z}_2$ since $g(x)$ is irreducible if and only if $p$ does not have a root, i.e. $p(a) \neq 0$ for all $a \in \mathbb{Z}_2$. We have that $g(0) = 1$ and $g(1) = 3 \equiv 1$. So neither $0$ or $1$ are a root of $p(x)$. Hence we see that we $p(x)$ is irreducible over $\mathbb{Z}_2[x]$.
 
-By 
+By the Division Algorithm, we have that
+$$p(x) + \langle x^3+x+1 \rangle =  a_0 + a_1 x + a_2 x^2 + \langle x^3+x+1 \rangle $$
+where $a_0, a_1, a_2 \in \mathbb{Z}_2$. So 
+$$ K = \{ a_0 + a_1 x + a_2 x^2 + \langle x^3+x+1 \rangle \, \vert \, a_0, a_1, a_2 \in \mathbb{Z}_2 \}. $$
+
+Note that since $a_0, a_1, a_2 \in \mathbb{Z}_2$ we see that the order of $K$ which we denote $\lvert K \rvert$ is
+\begin{align*}
+	\lvert K \rvert &\leq \lvert \mathbb{Z}_2 \rvert \times \lvert \mathbb{Z}_2 \rvert \times \lvert \mathbb{Z}_2 \rvert \\
+	&= 2 \times 2 \times 2 \\
+	&= 8.
+\end{align*}
+
+To see why $K$ has exactly $8$ elements, suppose $a_0 + a_1x + a_2x^2 + \langle x^3 + x + 1 \rangle = b_0 + b_1 x + b_2 x^2 + \langle x^3+x+1 \rangle$. Then 
+$$(a_0 - b_0) + (a_1-b_1)x + (a_2-b_2)x^2 \in \lvert x^3+x+1 \rvert. $$
+That is,
+$$ \underbrace{x^3 + x + 1}_{\deg 3} \, \vert \, \underbrace{(a_0-b_0) + (a_1-b_1)x + (a_2-b_2)x^2}_{\deg < 3}. $$
+So $(a_0-b_0) + (a_1-b_1)x + (a_2-b_2)x^2 = 0$. Hence $a_0 = b_0, a_1 = b_1$ and $a_2 = b_2$. Therefore $\lvert K \rvert = 8$.
+
+To explicitly see what the elements of $K$ are, let $\alpha := x + \langle x^3+x+1 \rangle \in K$. Now we want to compute the powers of $\alpha$ for $i = 1 \cdots 7$. This will give us the elements of $K$.
+\begin{align*}
+	\alpha^2 &= (x + \langle x^3 + x + 1\rangle)^2 \\
+	&= x^2 + 2x \langle x^3 + x + 1\rangle + (\langle x^3 + x + 1\rangle)^2 \\
+	&\equiv x^2 + \langle x^3 + x + 1\rangle.
+\end{align*}
+
+In $K$, $x^3 + x + 1 = 0 \iff \alpha^3 + \alpha + 1 = 0 \iff \alpha^3 = \alpha + 1$. That is, $\alpha^3 = x + 1 + \langle x^3 + x + 1\rangle$. Next we see that
+\begin{align*}
+	\alpha^4 &= \alpha^3 \cdot \alpha \\
+	&= (\alpha + 1) \cdot \alpha \\
+	&= (x+1) \cdot x \\
+	&\equiv x^2 + x + \langle x^3 + x + 1\rangle.
+\end{align*}
+
+Also 
+\begin{align*}
+	\alpha^5 &= \alpha^3 \cdot \alpha^2 \\
+	&= (\alpha + 1) \cdot \alpha^2 \\
+	&= \alpha^3 + \alpha^2 \\
+	&= (\alpha + 1) + \alpha^2 \\
+	&\equiv x + 1 + x^2 \\
+	&\equiv x^2 + x + 1 + \langle x^3 + x + 1\rangle.
+\end{align*}
+
+Continuing on, we have that
+\begin{align*}
+	\alpha^6 &= \alpha^3 \cdot \alpha^3 \\
+	&= (x+1)(x+1) \\
+	&= x^2 + 2x + 1 \\
+	&\equiv x^2 + 1 + \langle x^3 + x + 1\rangle.
+\end{align*}
+
+Lastly we have that 
+\begin{align*}
+	\alpha^7 &= \alpha^4 \cdot \alpha^3 \\
+	&= (\alpha^2 + \alpha) \cdot (\alpha + 1) \\
+	&= \alpha^3 + \alpha^2 + \alpha^2 + \alpha \\
+	&= \alpha^3 + \alpha \\
+	&= (\alpha + 1) + \alpha \\
+	&\equiv 1.
+\end{align*}
+
+Explicitly listing the elements of $K$, we have that
+\begin{align*}
+	K &= \{0, x, x^2, x + 1, x^2 + x, x^2 + x + 1, x^2 + 1, 1 \} \\
+	&= \{ 0, 1, x, x+1, x^2, x^2+1, x^2+x, x^2+x+1 \}.
+\end{align*}
+\qed \\
 
 \end{document}
